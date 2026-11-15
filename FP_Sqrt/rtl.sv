@@ -87,7 +87,7 @@ module fp_sqrt (
                 for (i = 23; i >= 0; i = i - 1) begin
                     remainder = (remainder << 2) |
                                 ((radicand >> (i * 2)) & 48'h3);
-                    trial = (root << 2) | 26'd1;
+                    trial = ({1'b0, root} << 2) | 26'd1;
                     if (remainder >= trial) begin
                         remainder = remainder - trial;
                         root = (root << 1) | 25'd1;
@@ -134,3 +134,4 @@ module fp_sqrt (
     end
 
 endmodule
+
